@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 
 const WHATSAPP_LINK =
-  "https://wa.me/918787054829?text=Hello%20DellOps%20Tech%2C%20I%20have%20a%20question.";
+  "https://wa.me/919311233320?text=Hello%20DellOps%20Tech%2C%20I%20have%20a%20question.";
 
 const faqs = [
   {
@@ -138,13 +138,13 @@ export default function FAQ() {
                 <span className="w-8 h-8 rounded-lg bg-black/5 flex items-center justify-center text-black">
                   ✉
                 </span>
-                <span>hello@dellopstech.com</span>
+                <span>dellOpstech1@gmail.com</span>
               </div>
               <div className="flex items-center gap-3 text-black/60">
                 <span className="w-8 h-8 rounded-lg bg-black/5 flex items-center justify-center text-black">
                   ☎
                 </span>
-                <span>+91 87870 54829</span>
+                <span>+91 9311233320</span>
               </div>
             </div>
           </div>

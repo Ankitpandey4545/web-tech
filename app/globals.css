@@ -1,50 +1,213 @@
  @import "tailwindcss";
 
+/* ============================================
+   1. FADE IN (Navbar dropdown)
+   ============================================ */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-8px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-.animate-fadeIn { animation: fadeIn 0.2s ease-out; }
 
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* ============================================
+   2. SLIDE UP (Hero entry)
+   ============================================ */
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-.animate-slideUp { animation: slideUp 0.8s ease-out forwards; opacity: 0; }
 
-.animation-delay-200 { animation-delay: 0.2s; }
-.animation-delay-500 { animation-delay: 0.5s; }
+.animate-slideUp {
+  animation: slideUp 0.8s ease-out forwards;
+  opacity: 0;
+}
 
+.animation-delay-200 {
+  animation-delay: 0.2s;
+}
+
+.animation-delay-500 {
+  animation-delay: 0.5s;
+}
+
+/* ============================================
+   3. FLOAT (Floating cards)
+   ============================================ */
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
-.animate-float { animation: float 4s ease-in-out infinite; }
 
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* ============================================
+   4. BLINK (Typewriter cursor)
+   ============================================ */
 @keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
 }
-.animate-blink { animation: blink 1s step-end infinite; }
 
-/* NEW — Slow rotating ring */
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* ============================================
+   5. SPIN SLOW (Rotating rings)
+   ============================================ */
 @keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
-.animate-spin-slow { animation: spin-slow 3s linear infinite; }
 
-/* NEW — Marquee infinite scroll */
+.animate-spin-slow {
+  animation: spin-slow 3s linear infinite;
+}
+
+/* ============================================
+   6. MARQUEE (Tech stack infinite scroll)
+   ============================================ */
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
-.animate-marquee { animation: marquee 40s linear infinite; }
 
-/* Pause on hover */
-.animate-marquee:hover { animation-play-state: paused; }
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
 
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* ============================================
+   7. MEGA DROPDOWN (Navbar mega menu)
+   ============================================ */
+@keyframes megaIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-12px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
+.animate-megaIn {
+  animation: megaIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ============================================
+   8. PULSE RINGS (Floating WhatsApp button)
+   ============================================ */
+@keyframes ping-slow {
+  0% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.animate-ping-slow {
+  animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.animate-ping-slower {
+  animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  animation-delay: 0.5s;
+}
+
+/* ============================================
+   9. SCROLL REVEAL (Global sections)
+   ============================================ */
+.reveal-init {
+  opacity: 0;
+  transform: translate3d(0, 40px, 0);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Group children stagger */
+.reveal-group > * {
+  opacity: 0;
+  transform: translate3d(0, 30px, 0);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-group.reveal-visible > * {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* ============================================
+   10. BASE STYLES
+   ============================================ */
 body {
   background-color: #ffffff;
   color: #000000;
+}
+
+/* ============================================
+   11. ACCESSIBILITY — Reduced Motion
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-init,
+  .reveal-group > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .animate-float,
+  .animate-ping-slow,
+  .animate-ping-slower,
+  .animate-spin-slow,
+  .animate-marquee,
+  .animate-blink {
+    animation: none !important;
+  }
 }
