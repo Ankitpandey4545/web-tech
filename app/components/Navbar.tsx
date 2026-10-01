@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 
 const WHATSAPP_LINK =
-  "https://wa.me/919311233320?text=Hello%20DellOps%20Tech%2C%20I%20want%20to%20discuss%20my%20project.";
+  "https://wa.me/918787054829?text=Hello%20DellOps%20Tech%2C%20I%20want%20to%20discuss%20my%20project.";
 
 const navItems = [
   {
@@ -305,39 +305,57 @@ export default function Navbar() {
                       {/* ============ RIGHT GRID ============ */}
                       <div className="col-span-8 p-4">
                         <div className="grid grid-cols-2 gap-1">
-                          {item.dropdown.map((sub: any) => (
-                            <Link
-                              key={sub.name}
-                              href={sub.href}
-                              className="group/item relative flex items-start gap-3 p-3.5 rounded-xl hover:bg-black/[0.03] transition-all duration-300"
-                            >
-                              <div className="flex-shrink-0 w-10 h-10 rounded-lg border border-black/10 bg-white flex items-center justify-center text-black group-hover/item:bg-black group-hover/item:text-white group-hover/item:border-black group-hover/item:scale-110 group-hover/item:rotate-3 transition-all duration-500">
-                                {sub.icon}
-                              </div>
+                          {item.dropdown.map((sub: any) => {
+                            // Industries → clickable nahi (div), Services → clickable (Link)
+                            const isIndustries = item.name === "Industries";
 
-                              <div className="flex-1 min-w-0">
-                                <div className="flex items-center gap-2 mb-0.5">
-                                  <p className="text-sm font-semibold text-black tracking-tight">
-                                    {sub.name}
-                                  </p>
-                                  {sub.tag && (
-                                    <span className="text-[8px] font-bold text-white bg-black px-1.5 py-0.5 rounded uppercase tracking-wider">
-                                      {sub.tag}
-                                    </span>
-                                  )}
+                            const innerContent = (
+                              <>
+                                <div className="flex-shrink-0 w-10 h-10 rounded-lg border border-black/10 bg-white flex items-center justify-center text-black group-hover/item:bg-black group-hover/item:text-white group-hover/item:border-black group-hover/item:scale-110 group-hover/item:rotate-3 transition-all duration-500">
+                                  {sub.icon}
                                 </div>
-                                <p className="text-xs text-black/50 leading-snug">
-                                  {sub.desc}
-                                </p>
-                              </div>
 
-                              <span className="flex-shrink-0 opacity-0 group-hover/item:opacity-100 -translate-x-1 group-hover/item:translate-x-0 transition-all duration-300 text-black mt-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-3.5 h-3.5">
-                                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                                </svg>
-                              </span>
-                            </Link>
-                          ))}
+                                <div className="flex-1 min-w-0">
+                                  <div className="flex items-center gap-2 mb-0.5">
+                                    <p className="text-sm font-semibold text-black tracking-tight">
+                                      {sub.name}
+                                    </p>
+                                    {sub.tag && (
+                                      <span className="text-[8px] font-bold text-white bg-black px-1.5 py-0.5 rounded uppercase tracking-wider">
+                                        {sub.tag}
+                                      </span>
+                                    )}
+                                  </div>
+                                  <p className="text-xs text-black/50 leading-snug">
+                                    {sub.desc}
+                                  </p>
+                                </div>
+
+                                <span className="flex-shrink-0 opacity-0 group-hover/item:opacity-100 -translate-x-1 group-hover/item:translate-x-0 transition-all duration-300 text-black mt-2">
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-3.5 h-3.5">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                                  </svg>
+                                </span>
+                              </>
+                            );
+
+                            return isIndustries ? (
+                              <div
+                                key={sub.name}
+                                className="group/item relative flex items-start gap-3 p-3.5 rounded-xl hover:bg-black/[0.03] transition-all duration-300 cursor-default select-none"
+                              >
+                                {innerContent}
+                              </div>
+                            ) : (
+                              <Link
+                                key={sub.name}
+                                href={sub.href}
+                                className="group/item relative flex items-start gap-3 p-3.5 rounded-xl hover:bg-black/[0.03] transition-all duration-300"
+                              >
+                                {innerContent}
+                              </Link>
+                            );
+                          })}
                         </div>
 
                         {/* Bottom CTA bar — Dynamic */}
@@ -450,19 +468,36 @@ export default function Navbar() {
                       }`}
                     >
                       <div className="pl-4 flex flex-col gap-1">
-                        {item.dropdown.map((sub: any) => (
-                          <Link
-                            key={sub.name}
-                            href={sub.href}
-                            onClick={() => setOpen(false)}
-                            className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-black/70 hover:bg-black/5 hover:text-black transition"
-                          >
-                            <span className="flex-shrink-0 w-7 h-7 rounded-md border border-black/10 flex items-center justify-center text-black">
-                              <span className="scale-75">{sub.icon}</span>
-                            </span>
-                            {sub.name}
-                          </Link>
-                        ))}
+                        {item.dropdown.map((sub: any) => {
+                          const isIndustries = item.name === "Industries";
+
+                          const innerContent = (
+                            <>
+                              <span className="flex-shrink-0 w-7 h-7 rounded-md border border-black/10 flex items-center justify-center text-black">
+                                <span className="scale-75">{sub.icon}</span>
+                              </span>
+                              {sub.name}
+                            </>
+                          );
+
+                          return isIndustries ? (
+                            <div
+                              key={sub.name}
+                              className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-black/70 cursor-default select-none"
+                            >
+                              {innerContent}
+                            </div>
+                          ) : (
+                            <Link
+                              key={sub.name}
+                              href={sub.href}
+                              onClick={() => setOpen(false)}
+                              className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-black/70 hover:bg-black/5 hover:text-black transition"
+                            >
+                              {innerContent}
+                            </Link>
+                          );
+                        })}
                       </div>
                     </div>
                   </>

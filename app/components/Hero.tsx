@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const WHATSAPP_LINK =
-  "https://wa.me/918787054829?text=Hello%20DellOps%20Tech%2C%20I%20want%20to%20discuss%20my%20project.";
+  "https://wa.me/919311233320?text=Hello%20DellOps%20Tech%2C%20I%20want%20to%20discuss%20my%20project.";
 
 const ROTATING_WORDS = [
   "Websites",
